@@ -2907,44 +2907,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'purchse-component',
   components: {
-    StripeCheckout: _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_0__.StripeCheckout
-  },
-  data: function data() {
-    return {
-      loading: false,
-      lineItems: [{
-        name: 'p1',
-        price: 20,
-        quantity: 1
-      }, {
-        name: 'p2',
-        price: 210,
-        quantity: 1
-      }, {
-        name: 'p3',
-        price: 6,
-        quantity: 1
-      }]
-    };
-  },
-  methods: {
-    submit: function submit() {
-      this.$refs.checkoutRef.redirectToCheckout();
-    }
+    StripeElementCard: _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_0__.StripeElementCard
   }
 });
 
@@ -22586,32 +22552,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticStyle: { "margin-top": "100px" } },
-    [
-      _c("h1", [_vm._v("Pay Now")]),
-      _vm._v(" "),
-      _c("stripe-checkout", {
-        ref: "checkoutRef",
-        attrs: {
-          mode: "payment",
-          pk: "pk_test_m6F3plFNeLquMEYTZkpvBlBP00pHDCPGOj",
-          lineItems: _vm.lineItems,
-          "success-url": "",
-          "cancel-url": "",
-        },
-        on: {
-          loading: function (v) {
-            return (_vm.loading = v)
-          },
-        },
-      }),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.submit } }, [_vm._v("Pay now!")]),
-    ],
-    1
-  )
+  return _c("div", [_c("stripe-element-card")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
