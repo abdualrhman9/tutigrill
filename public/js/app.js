@@ -2901,6 +2901,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue-stripe/vue-stripe */ "./node_modules/@vue-stripe/vue-stripe/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2908,9 +2917,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    StripeElementCard: _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_0__.StripeElementCard
+    StripeCheckout: _vue_stripe_vue_stripe__WEBPACK_IMPORTED_MODULE_0__.StripeCheckout
+  },
+  data: function data() {
+    this.publishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+    return {
+      loading: false,
+      lineItems: [{
+        name: 'Test Name',
+        price: 20,
+        // The id of the one-time price you created in your Stripe dashboard
+        quantity: 1
+      }],
+      successURL: '',
+      cancelURL: ''
+    };
+  },
+  methods: {
+    getSessionId: function getSessionId() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/getSessionId').then(function (data) {
+        return console.log(data);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    submit: function submit() {
+      // You will be redirected to Stripe's secure checkout page
+      this.$refs.checkoutRef.redirectToCheckout();
+    }
   }
 });
 
@@ -22552,7 +22589,21 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("stripe-element-card")], 1)
+  return _c(
+    "div",
+    [
+      _c("stripe-checkout", {
+        ref: "checkoutRef",
+        attrs: {
+          pk: "pk_test_m6F3plFNeLquMEYTZkpvBlBP00pHDCPGOj",
+          "session-id": _vm.getSessionId(),
+        },
+      }),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.submit } }, [_vm._v("Pay now!")]),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
