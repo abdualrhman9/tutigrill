@@ -467,6 +467,13 @@ section.features .container .content .feat {
     border-radius: 5px;
     padding: 20px;
     box-shadow: 2px 2px 5px 0px;
+    transition: .5s all;
+}
+
+@media screen and (min-width: 1000px) {
+    section.features .container .content .feat:hover {
+        border-radius: 50%;
+    }
 }
 
 section.features .container .content .feat i {

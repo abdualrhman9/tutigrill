@@ -30,7 +30,8 @@ Route::get('/getSessionId',function(){
                    'currency'=>'usd',
                    'unit_amount'=>500,
                    'product_data'=>[
-                       'name'=>'Cool Stripe Checkout'
+                       'name'=>'Cool Stripe Checkout',
+                    //    'price'=>5,
                    ]
                ],
                'quantity'=>1,
