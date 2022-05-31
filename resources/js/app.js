@@ -12,7 +12,6 @@ Vue.use(VueRouter);
 Vue.use(eventbus);
 
 
-
 const app = new Vue({
     el: '#app',
     components: {App},

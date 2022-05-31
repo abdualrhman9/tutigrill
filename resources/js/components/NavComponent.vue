@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="nav-right">
-                        <nav-item :refrence="'reservation'" :title="'Book A Table'"></nav-item>
+                        <nav-item :refrence="'#reservation'" :title="'Book A Table'"></nav-item>
                         
                         <nav-item :refrence="''" :title="''">
                             <cart-component></cart-component>
