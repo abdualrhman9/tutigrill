@@ -1,10 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HeroSection from './components/HeroSection'
-import FeaturesSection from './components/FeaturesSection'
-import MenuSection from './components/MenuSection'
+import HeroSection from './components/HeroSection.vue'
+import FeaturesSection from './components/FeaturesSection.vue'
+import MenuSection from './components/MenuSection.vue'
 import PurchseComponent from './components/PurchseComponent.vue'
 import Reservation from './components/Reservation.vue'
+import ContactSection from './components/ContactSection.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -16,7 +17,8 @@ export default new VueRouter({
                 'hero': HeroSection, 
                 'features': FeaturesSection,
                 'menu': MenuSection,
-                'reservation': Reservation
+                'reservation': Reservation,
+                'contact': ContactSection,
             }
         },
         {
@@ -31,11 +33,12 @@ export default new VueRouter({
     scrollBehavior: function(to, from, savedPosition) {
        
         if (to.hash) { 
-            try{
-                document.getElementById(to.hash.replace('#','')).scrollIntoView();
-            } catch(err){
+            const target = document.getElementById(to.hash.replace('#',''));
+            if(target)
+                target.scrollIntoView();
+            else 
                 document.getElementById('app').scrollIntoView();
-            }
+            
         }
         
     }

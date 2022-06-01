@@ -674,25 +674,25 @@ body{
     display: block;
 } */
 
-.header .container .nav .nav-right .cart div.cart-content .product {
+.cart .product {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.header .container .nav .nav-right .cart div.cart-content .product img {
+.cart .product img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-.header .container .nav .nav-right .cart div.cart-content .product .product-info {
+.cart .product .product-info {
     flex: 1;
     margin-left: 5px;
 
 }
 
-.header .container .nav .nav-right .cart div.cart-content .product .count {
+.cart .product .count {
     width: 40px;
     margin: 0 5px;
 }
@@ -748,9 +748,10 @@ section.hero .intro {
 }
 
 section.hero .intro h1 {
-    color: var(--text-color);
+    color: var(--hover-color);
     font-size: 50px;
     margin-top: 0;
+    display: inline;
 }
 @media (max-width: 520px) {
     section.hero .intro {
@@ -759,10 +760,16 @@ section.hero .intro h1 {
     section.hero .intro h1{
         font-size: 2rem;
     }
+    section.hero .intro p {
+        font-size: 12px;
+    }
+
 }
-section.hero .intro h1 span {
-    color: var(--hover-color);
-}
+/* section.hero .intro span {
+    color: var(--text-color);
+    font-size: 50px;
+    display: inline;
+} */
 section.hero .intro p {
     margin: 0;
     font-size: 20px;

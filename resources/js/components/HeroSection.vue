@@ -2,7 +2,8 @@
     <!-- Start Hero -->
     <section class="hero">
         <div class="intro">
-            <h1>Welcome To  <span>Tuti Grill</span></h1>
+            
+            <h1> Tuti Grill </h1>
             <p>
                 TutiGrill offers a range of grilled delicacies.
                 All daily food is 100% fresh. Our prices are unparalleled.
