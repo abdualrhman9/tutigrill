@@ -477,12 +477,6 @@ section.features .container .content .feat {
     transition: .5s all;
 }
 
-@media screen and (min-width: 1000px) {
-    section.features .container .content .feat:hover {
-        border-radius: 50%;
-    }
-}
-
 section.features .container .content .feat i {
     font-size: 50px;
     color: var(--hover-color);
@@ -584,6 +578,34 @@ section.menu div.menu div ul.nav-menu li a.active {
         grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
     }
 }
+
+.menu-preview .meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    box-shadow: 1px 2px 4px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.menu-preview .meal img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex: 1;
+}
+
+.menu-preview .meal small {
+    font-weight: 600;
+}
+
+.menu-preview .meal p {
+    text-align: left;
+    flex: 1;
+}
+
 /* End Menu */
 
 /* Start Contact */

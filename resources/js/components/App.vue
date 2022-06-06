@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <nav-component :logo="'img/logo.jpg'"></nav-component>
         
         <router-view name="hero"> </router-view>
@@ -11,17 +12,31 @@
 
         <footer-component></footer-component>
 
+        
+
     </div>
 </template>
 
 <script>
 import NavComponent from './NavComponent.vue'
 import FooterComponent from './FooterComponent.vue'
+import Loader from './Loader.vue'
 export default {
     name: 'app',
+    metaInfo: {
+        title: 'TutiGrill',
+        titleTemplate: '%s | Home',
+    },
     created(){
     },
-    components: { NavComponent,FooterComponent },
+    mounted(){
+        setTimeout(()=>{ this.loading = false },2000);
+        // this.loading = false;
+    },
+    components: { 
+        NavComponent,FooterComponent,Loader
+    },
+
     data: function(){
         return {
             

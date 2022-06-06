@@ -4,7 +4,7 @@
     data-order-btn 
     id="order" 
     @click="addToCart(meal)"
-    > </button>
+    > {{ disabled ? 'added' : text }} </button>
 </template>
 
 <script>
@@ -14,14 +14,23 @@ export default {
     mounted(){
         this.$bus.$on('newItemAdded',(item)=>{
             if(item == this.meal){
-                // this.$el.innerHTML = 'Added';
-                // this.$el.setAttribute('disabled',true);
+                this.text = 'added'
+            }
+        });
+        this.$bus.$on('itemRemoved',(item)=>{
+            if(item.id == this.meal.id){
+                this.text = 'add to cart'
             }
         });
     },
     methods: {
         addToCart(item){
             this.$bus.$emit('addNewItem',item);
+        }
+    },
+    data(){
+        return {
+            text: 'add to cart'
         }
     }
 }

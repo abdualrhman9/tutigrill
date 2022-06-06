@@ -1,9 +1,10 @@
 <template>
-    <li class="nav-item">
-        <router-link 
+    <li class="nav-item" >
+        <a 
+            href=""
             class="nav-link" 
-            :to="{name: 'home', hash: refrence}"
-        > {{title}} </router-link>
+            @click.prevent="navigateTo({name: 'home', hash: refrence, replace: true})"
+        > {{title}} </a>
         <slot></slot>
     </li>
 </template>
@@ -12,6 +13,13 @@
 export default {
     name: 'nav-item',
     props: ['refrence','title'],
+    methods: {
+        navigateTo: function(router){
+            this.$bus.$emit('collapse-menu');
+            this.$router.push(router);
+        }
+    },
+    
 }
 </script>
 

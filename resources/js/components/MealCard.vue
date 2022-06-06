@@ -1,12 +1,12 @@
 <template>
     <div class="meal">
         <img src="img/hero.jpg" width="200" height="200" alt="">
-        <p>{{ meal.name }}</p>
+        <h1>{{ meal.name }}</h1>
         <small> $ {{ meal.price }} </small>
+        <p>pariatur, saepe quis est nisi tempora ipsam. Doloribus nobis reprehenderit sed consectetur eum nihil dolor. </p>
         <order-button 
             :disabled="inCart" 
             :meal="meal" 
-            v-text="inCart ? 'Added' :'Add To Cart'"
         ></order-button>
     </div>
 </template>
@@ -16,7 +16,11 @@ import OrderButton from './OrderButton.vue'
 export default {
   components: { OrderButton },
     name: 'meal-card',
-    props: ['meal','inCart']
+    mounted(){
+        
+    },
+    props: ['meal','inCart'],
+   
 }
 </script>
 

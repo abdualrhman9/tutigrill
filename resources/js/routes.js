@@ -6,6 +6,7 @@ import MenuSection from './components/MenuSection.vue'
 import PurchseComponent from './components/PurchseComponent.vue'
 import Reservation from './components/Reservation.vue'
 import ContactSection from './components/ContactSection.vue'
+import NotFoundComponent from './components/NotFoundComponent.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -26,6 +27,13 @@ export default new VueRouter({
             path: '/purchse',
             components: {
                 'default': PurchseComponent
+            }
+        },
+        {
+            name:'notFound',
+            path: '/:id(.*)',
+            components: {
+                'default': NotFoundComponent
             }
         }
     ],

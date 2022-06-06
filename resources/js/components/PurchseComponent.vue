@@ -9,15 +9,14 @@
       />
       <div class="cart">
         <product-component 
-          v-for="meal in data" 
+          v-for="(meal,index) in data" 
           :key="meal.id"
-          @product-removed="(meal)=>console.log" 
-          @quantity-updated="(meal)=>console.log"
+          @quantity-updated="quantityUpdated"
           :meal="meal"
-        > </product-component>
+        > <hr v-if="index != data.length-1"> </product-component>
       </div>
-      <small>total: {{ getTotal }}</small>
-      <button @click.prevent="submit" class="btn btn-primary"> Confirm Order </button>
+      <small class="purchse-total">Total: {{ getTotal }}</small>
+      <button @click.prevent="submit" class="btn btn-primary"> Checkout </button>
     </div>
 </template>
 
@@ -25,8 +24,24 @@
 import { StripeCheckout } from '@vue-stripe/vue-stripe'
 import ProductComponent from './ProductComponent.vue';
 export default {
+  beforeMount() {
+    window.addEventListener("beforeunload", this.preventNav)
+  },
+  beforeDestroy() {
+    window.removeEventListener("beforeunload", this.preventNav);
+  },
+  beforeRouteLeave: function(to, from, next){
+    if (this.isEditing) {
+      if (!window.confirm("Leave without saving?")) {
+        return;
+      }
+    }
+    next();
+  },
   mounted(){
     this.getData();
+    this.$bus.$on('remove-meal',this.productRemoved);
+    this.$bus.$on('quantity-updated',this.quantityUpdated);
     this.getSessionId();
   },
   name: 'purchse-component',
@@ -40,18 +55,40 @@ export default {
       this.data.forEach((meal)=>{
         total += meal.price * meal.quantity
       });
-      return total;
+      return Math.abs(total).toFixed(2);
+      // return total;
     }
   },
   data: function(){
     return {
       sessionId: null,
       sessionUrl: null,
-      data: []
+      data: [],
+      isEditing: false,
     }
   },
 
   methods: {
+     preventNav: function(event){ 
+        if (!this.isEditing) return
+        event.preventDefault()
+        // Chrome requires returnValue to be set.
+        event.returnValue = ""
+    },
+    productRemoved: function(meal){
+      this.isEditing = true;
+      let i = this.data.findIndex((product)=>product.id == meal.id);
+      if(i !== -1)
+        this.data.splice(i,1)
+    },
+    quantityUpdated: function(meal){
+      this.isEditing = true;
+      let i = this.data.findIndex((product)=>product.id == meal.id);
+      if(i !== -1){
+        this.data[i].quantity = meal.quantity;
+      }
+      // console.log(meal);
+    },
     getSessionId: function(){
       
       if(this.data.length === 0){
@@ -101,10 +138,10 @@ export default {
     align-items: center;
     flex-wrap: wrap;
   }
-  .meal{
-    /* background-color: #ffff;
-    padding: 20px;
-    box-shadow: 1px 2px 5px 0px;
-    margin: 10px; */
+  .purchse-total{
+    margin-top: 10px;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
   }
 </style>

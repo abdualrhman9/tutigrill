@@ -70,6 +70,8 @@ export default {
     mounted: function () {
         //
     },
+    metaInfo: {
+    },
     data: function () {
         return {
             activeView: 1,

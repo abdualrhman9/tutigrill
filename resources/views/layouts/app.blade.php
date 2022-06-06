@@ -6,7 +6,7 @@
 
     <!-- Search Meta -->
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="theme-color" content="#4c4355">
   <link rel="icon" href="" type="image/x-icon">
   <meta name="title" content="tutigrill">
@@ -47,7 +47,7 @@
 </head>
 <body>
 <div id="app">
-    @yield('content')
+    <App />
 </div>
 </body>
 </html>

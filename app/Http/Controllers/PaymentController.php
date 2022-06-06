@@ -8,6 +8,10 @@ use Stripe\StripeClient;
 class PaymentController extends Controller
 {
     public function getSessionId(Request $request){
+        $request->validate([
+            'line_items'=>'required',
+            // 'line_items.*'=>'required'
+        ]);
         $stripe = new StripeClient(env('STRIPE_API_KEY'));
         $checkout = $stripe->checkout->sessions->create([
             'success_url'=>'https://tutigrill.com',

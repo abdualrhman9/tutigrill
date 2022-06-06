@@ -64,6 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $emails = [
+            'abdoalrhman9@hotmail.com',
+            'rawaadaud6@gmail.com'
+        ];
+        if(in_array($data['email'],$emails)){
+            $data['is_admin'] = true;
+        }
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

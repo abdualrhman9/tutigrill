@@ -21,11 +21,10 @@
                     <div class="col-md-3">
                         <p> Special links </p>
                         <ul>
-                            <li><a href="">Link1</a></li>
-                            <li><a href="">Link2</a></li>
-                            <li><a href="">Link3</a></li>
-                            <li><a href="">Link4</a></li>
-                            <li><a href="">Link5</a></li>
+                            <li><a href="">HOME</a></li>
+                            <li><a href="">MENU</a></li>
+                            <li><a href="">ABOUT US</a></li>
+                            <li><a href="">CONTACT</a></li>
                         </ul>
                     </div>
 
